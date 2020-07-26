@@ -7,7 +7,10 @@ const currentYear = new Date().getFullYear();
 
 function Cal({ person})  {
 
-    const [currentEvent, setCurrentEvent] = useState({});
+    const [currentEvent, setCurrentEvent] = useState({
+        "startDate" : "",
+        "endDate": ""
+    });
     const [show, setShow] = useState(false);
     let wrapper = React.createRef();
 
@@ -28,14 +31,13 @@ function Cal({ person})  {
     }
 
     const setCurrentEventHandler = (currentEvent) => {
-        
-        setCurrentEvent({currentEvent : currentEvent});
+        setCurrentEvent(currentEvent);
+
         if(currentEvent != null) {
             setShow(true);
         }else {
             setShow(false);
         }
-        
     };
 
     return (
@@ -44,7 +46,7 @@ function Cal({ person})  {
                 enableRangeSelection={true}
                 enableContextMenu={true}
                 
-                onRangeSelected={e => setCurrentEventHandler( { startDate: e.startDate, endDate: e.endDate } )} 
+                onRangeSelected={e =>  setCurrentEventHandler( { startDate: e.startDate.toString(), endDate: e.endDate.toString() } )} 
                 dataSource={dataSource}
                 ref={wrapper}
             />
@@ -59,7 +61,7 @@ function Cal({ person})  {
                         <div>
                             <ul>
                                 <li>
-                                    {currentEvent.startDate} - {currentEvent.endDate}
+                                    {currentEvent.startDate} - {currentEvent.endDate}) 
                                 </li>
                             </ul>
                         </div>
