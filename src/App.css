@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,78 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing:border-box ;
+}
+
+body {
+  
+  color : white;
+}
+
+.Container {
+  width: 1100px;
+  margin: auto;
+}
+
+header img { 
+  height: 80px; 
+}
+
+header {
+  margin-top: 30px;
+
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+input[type='text'] {
+ display: block;
+ padding: 10px;
+ font-size: 20px;
+ border: 0;
+ border-radius: 5px;
+ width: 60%;
+ margin: auto;
+}
+
+.characterGrid {
+   display: flex;
+   justify-content: center
+}
+
+ul li {
+  text-decoration:  none;
+  list-style: none;
+}
+
+.card {
+  height: 300px;
+  width: 280px;
+  margin:20px;
+}
+
+.cardBody img {
+  height: 300px;
+  width: 280px;
+}
+
+.calendar {
+  height:90vh!important;
+}
+.cardBody img:hover {
+ cursor: pointer;
+} 
+
+
+.cardBody ul li {
+ margin : 10px;
 }

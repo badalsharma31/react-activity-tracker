@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import Persons from './components/ui/persons';
+import Axios from 'axios';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  let [items, setItems] = useState([]);
+  let [isLoading, setIsLoading] = useState(true); 
+
+  useEffect( () => {
+    async function fetchData() {
+        const result = await Axios(
+        `https://5f19a5fde104860016baf19e.mockapi.io/api/users`
+        );
+        console.log("in use ffect ", result);
+        setItems(result.data.members);
+        setIsLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  let persons = items.map((person, index) => {
+    return (<div
+      key={person.id}>
+        {person.real_name} 
+    </div> )
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Persons items={items}  isLoading={isLoading}></Persons>
+
     </div>
   );
 }
