@@ -10,8 +10,6 @@ const Persons = ({items, isLoading}) => {
     let images = [img0, img1];
     const [calShow, setCalShow] = useState(false);
     const [per, setPer] = useState({});
-    let wrapper = React.createRef();
-
 
     const onClickHandler = (index, person) => {
         setCalShow(true);
@@ -25,15 +23,13 @@ const Persons = ({items, isLoading}) => {
     let persons = items.map((person, index) => {
         
         return (
-            <div>
-                <Person
-                    person={person} 
-                    img={images[index]}
-                    click={() => onClickHandler(index, person)}
-                    key={person.id}
-                    >
-                </Person>
-            </div>
+            <Person
+                person={person} 
+                img={images[index]}
+                click={() => onClickHandler(index, person)}
+                key={person.id}
+                >
+            </Person>
         );
         
     });
@@ -46,7 +42,7 @@ const Persons = ({items, isLoading}) => {
             calShow ? (
                 <div >
                     <Button variant="primary" style={{margin:"10px 20px"}} onClick={homeHandler}>Home</Button>
-                    <Calendar ref={wrapper} className="calendar" person={per} key={per.id}></Calendar>
+                    <Calendar className="calendar" person={per} key={per.id}></Calendar>
                 </div>
             ) : (
                 <div className="characterGrid">

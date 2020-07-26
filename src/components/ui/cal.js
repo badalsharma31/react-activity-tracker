@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import Calendar from 'rc-year-calendar';
-import { Modal, Button } from 'react-bootstrap';
-
-const currentYear = new Date().getFullYear();
-
+import { Modal } from 'react-bootstrap';
 
 function Cal({ person})  {
 

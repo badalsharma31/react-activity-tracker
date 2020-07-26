@@ -20,7 +20,7 @@ function App() {
     fetchData();
   }, []);
 
-  let persons = items.map((person, index) => {
+  items.map((person) => {
     return (<div
       key={person.id}>
         {person.real_name} 

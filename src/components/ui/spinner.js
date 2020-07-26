@@ -3,7 +3,7 @@ import spinner from '../../img/spinner.gif';
 const Spinner = props => {
     return (
         <div>
-            <img src={spinner} style={{width: "100px", margin: "auto", display:"block" }}></img>
+            <img src={spinner} alt="loading..." style={{width: "100px", margin: "auto", display:"block" }}></img>
         </div>
     )
 }
