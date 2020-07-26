@@ -40,7 +40,7 @@ const Persons = ({items, isLoading}) => {
         ) : 
         (
             calShow ? (
-                <div >
+                <div style={{background:"black"}}>
                     <Button variant="primary" style={{margin:"10px 20px"}} onClick={homeHandler}>Home</Button>
                     <Calendar className="calendar" person={per} key={per.id}></Calendar>
                 </div>

@@ -13,7 +13,6 @@ function App() {
         const result = await Axios(
         `https://5f19a5fde104860016baf19e.mockapi.io/api/users`
         );
-        console.log("in use ffect ", result);
         setItems(result.data.members);
         setIsLoading(false);
     }

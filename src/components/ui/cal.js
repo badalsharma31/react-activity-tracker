@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Calendar from 'rc-year-calendar';
 import { Modal } from 'react-bootstrap';
 
+
 function Cal({ person})  {
 
     const [currentEvent, setCurrentEvent] = useState({
@@ -9,9 +10,8 @@ function Cal({ person})  {
         "endDate": ""
     });
     const [show, setShow] = useState(false);
-    let wrapper = React.createRef();
-
-    console.log('persons is', person);
+    let wrapper = React.createRef();    
+    let dateTimeMap = {};
     let activityPeriod = person.activity_periods;
     let dataSource = [];
     for(let activity of activityPeriod) {
@@ -21,8 +21,23 @@ function Cal({ person})  {
 
         obj['id'] = person.id;
         obj['name'] = person.real_name;
-        obj['startDate'] = new Date(startTime.split(':')[0]);
-        obj['endDate'] = new Date(endTime.split(':')[0]);
+
+        let startDateArr = startTime.split(':');
+        let startTimeArr = startTime.split(" ");
+        let st = startTimeArr[startTimeArr.length -1];
+
+        
+        let endDateArr = endTime.split(':');
+        let endTimeArr = endTime.split(" ");
+        let et = endTimeArr[endTimeArr.length -1];
+        let finalSd =  new Date(startDateArr[0]);
+        let finalEd = new Date(endDateArr[0]);
+
+        obj['startDate'] = finalSd;
+        obj['endDate'] = finalEd;
+
+        dateTimeMap[finalSd.toString()] = st + "-" + et;
+        
 
         dataSource.push(obj);
     }
@@ -52,13 +67,14 @@ function Cal({ person})  {
             {show && (
                 <div>
                     <Modal.Header closeButton>
-                        <Modal.Title>{ "Activity Of The Day"}</Modal.Title>
+                        <Modal.Title style={{color:"black"}}>{ "Activity Of The Day"}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div>
                             <ul>
-                                <li>
-                                    {currentEvent.startDate} - {currentEvent.endDate}) 
+                                <li style={{color:"black"}}>
+                                    <strong> Activity Time : </strong>
+                                    {dateTimeMap[currentEvent.startDate]}
                                 </li>
                             </ul>
                         </div>
